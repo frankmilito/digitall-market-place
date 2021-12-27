@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Box, Grid, Typography} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -6,6 +6,8 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
+import {getAllProduct} from '../../redux/actions/products'
+import {useDispatch, useSelector} from 'react-redux'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
@@ -90,12 +92,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function ProductsOverview() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllProduct(() => {}))
+  }, [])
   const classes = useStyles()
   return (
     <>
       <Box className={classes.box}>
         <Grid container className={classes.wrapper}>
-          <Grid item md={6}>
+          <Grid item md={6} id='#some-id'>
             <Typography variant='h2' className={classes.title}>
               Product Overview
             </Typography>

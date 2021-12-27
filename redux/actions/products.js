@@ -1,59 +1,77 @@
-import { GET_ALL_PRODUCTS, GET_SINGLE_PRODUCTS } from "./Contants";
-import callApi from "../../UtilityService/ApiConfigurations";
-import Swal from "sweetalert2";
+import {GET_ALL_PRODUCTS, GET_SINGLE_PRODUCTS} from './Contants'
+import callApi from '../../UtilityService/ApiConfigurations'
+import Swal from 'sweetalert2'
+import axios from 'axios'
 
 // Get single product
-export const getSingleProduct = (data, cb) => async (dispatch) => {
+export const getSingleProduct = (data, cb) => async dispatch => {
   try {
-    const res = await callApi(`products/${data}`, "GET");
+    const res = await callApi(`products/${data}`, 'GET')
 
-    if (res.code === "00") {
+    if (res.code === '00') {
       dispatch({
         type: GET_SINGLE_PRODUCTS,
         payload: res.data,
-      });
+      })
     } else {
       Swal.fire({
-        icon: "error",
-        title: "Error occured",
+        icon: 'error',
+        title: 'Error occured',
         text: res.message,
-      });
+      })
     }
   } catch (error) {
     Swal.fire({
-      icon: "error",
-      title: "Error occured",
-      text: "Oops! something went wrong",
-    });
+      icon: 'error',
+      title: 'Error occured',
+      text: 'Oops! something went wrong',
+    })
   } finally {
-    cb();
+    cb()
   }
-};
+}
 
 // get all products
-export const getAllProduct = (cb) => async (dispatch) => {
+export const getAllProduct = cb => async dispatch => {
   try {
-    const res = await callApi("products", "GET");
+    const res = await callApi('products', 'GET')
+    console.log(res, 'response')
+    // const res = axios
+    //   .get('https://fakestoreapi.com/')
+    //   .then(response => {
+    //     // handle success
+    //     console.log(response)
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log(error)
+    //   })
 
-    if (res.code === "00") {
+    if (res) {
       dispatch({
         type: GET_ALL_PRODUCTS,
-        payload: res.data,
-      });
+        payload: res,
+      })
     } else {
       Swal.fire({
-        icon: "error",
-        title: "Error occured",
+        icon: 'error',
+        title: 'Error occured',
         text: res.message,
-      });
+      })
     }
   } catch (error) {
     Swal.fire({
-      icon: "error",
-      title: "Error occured",
-      text: "Oops! something went wrong",
-    });
+      icon: 'error',
+      title: 'Error occured',
+      text: 'Oops! something went wrong',
+    })
   } finally {
-    cb();
+    cb()
   }
-};
+}
+// export const getAllProduct = () => {
+//   axios
+//     .get('https://fakestoreapi.com/products')
+//     .then(response => console.log(response))
+//     .catch(error => console.log(error))
+// }

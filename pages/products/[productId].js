@@ -29,14 +29,9 @@ const useStyles = makeStyles(theme => ({
   iconBtn: {
     color: '#000',
   },
-  button: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+
   logo: {
     maxWidth: '100%',
-    // width: '250px',
-    // height: '400px',
     [theme.breakpoints.down('md')]: {
       width: '200px',
       height: '200px',
@@ -47,10 +42,10 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     display: 'inline',
-    fontFamily: 'Poppins',
-    fontSize: '4opx',
-    fontWeight: '600',
-    lineHeight: '36px',
+    fontFamily: 'Playfair Display',
+    fontSize: '40px',
+    fontWeight: '500',
+    margin: '1em 0',
     [theme.breakpoints.down('md')]: {
       fontSize: '20px',
       lineHeight: '20px',
@@ -62,23 +57,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     textAlign: 'center',
   },
-  grams: {
-    display: 'inline',
-    fontFamily: 'Poppins',
-    fontWeight: '800',
-    fontSize: '30px',
-    lineHeight: '40px',
-
-    [theme.breakpoints.down('md')]: {
-      fontSize: '22px',
-    },
-  },
   button: {
     borderRadius: '50px',
     color: '#fff',
     padding: '15px 45px',
     textTransform: 'capitalize',
-    fontFamily: 'Poppins',
+    fontFamily: 'Playfair Display',
     fontSize: '18px',
     fontWeight: '500',
     margin: '1em 0',
@@ -98,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   content: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Playfair Display',
     fontSize: '24px',
     fontWeight: '700',
     // lineHeight: "22px",
@@ -193,7 +177,7 @@ function ProductDetails() {
             <Typography className={classes.title}>
               <small className={classes.grams}>Products name</small>
             </Typography>
-            <Typography className={classes.content}>₦ 5000</Typography>
+            <Typography className={classes.content}>€ 5000</Typography>
             {/* <Link href="#"> */}
             <Typography className={classes.description}>
               Product description Lorem ipsum dolor, sit amet consectetur

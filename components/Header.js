@@ -11,12 +11,6 @@ import {
   IconButton,
   Box,
   Badge,
-  Button,
-  MenuItem,
-  Menu,
-  List,
-  ListItemText,
-  ListItemIcon,
   ListItem,
 } from '@material-ui/core'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
@@ -62,9 +56,9 @@ const useStyles = makeStyles(theme => ({
     padding: '1em 0',
   },
   logo: {
-    maxWidth: '100%',
-    height: '50px',
-    width: '150px',
+    fontFamily: 'Playfair Display',
+    fontSize: '1.8em',
+    fontWeight: 700,
   },
   links: {
     fontFamily: 'Poppins',
@@ -135,6 +129,10 @@ function Header() {
   const toggle = () => {
     setOpenDropDown(true)
   }
+  const handleScroll = () => {
+    const anchor = document.querySelector('#some-id')
+    anchor.scrollIntoView({behavior: 'smooth', block: 'center'})
+  }
 
   return (
     <>
@@ -147,12 +145,8 @@ function Header() {
             className={classes.container}
           >
             <Grid item sm={2}>
-              <Link href='/' className={classes.logo}>
-                <img
-                  src='/images/Logo.png'
-                  alt=' logo'
-                  className={classes.logo}
-                />
+              <Link href='/'>
+                <Typography className={classes.logo}>Frank & Stores</Typography>
               </Link>
             </Grid>
             {isMobile ? (
@@ -191,10 +185,11 @@ function Header() {
                       variant='body1'
                     >
                       <Link
-                        href='/shop'
+                        href='#some-id'
+
                         // style={{ textDecoration: "none" }}
                       >
-                        <ListItem> Shop</ListItem>
+                        <ListItem> Products</ListItem>
                       </Link>
                     </Typography>
 
