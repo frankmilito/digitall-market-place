@@ -1,0 +1,30 @@
+{
+  "name": "digital-market-place",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.24.0",
+    "next": "10.2.0",
+    "next-redux-wrapper": "^7.0.5",
+    "nextjs-redirect": "^5.0.2",
+    "nprogress": "^0.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-paystack": "^3.0.5",
+    "react-redux": "^7.2.6",
+    "react-toastify": "^8.1.0",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.0",
+    "sweetalert2": "^11.1.10"
+  }
+}

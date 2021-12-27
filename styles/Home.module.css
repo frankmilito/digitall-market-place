@@ -1,0 +1,8 @@
+.MuiOutlinedInput-input {
+  padding: 14px 14px;
+}
+
+.bg {
+  background-image: url('../public/assets/images/api.svg') center center/content-box
+    no-repeat;
+}
