@@ -60,9 +60,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontFamily: 'Poppins',
-    fontSize: '40px',
-    fontWeight: '700',
-    lineHeight: '50px',
+    fontSize: '28px',
+    fontWeight: '500',
+    lineHeight: '30px',
+    marginBottom: '20px',
+    textTransform: 'capitalize',
     [theme.breakpoints.down('md')]: {
       fontSize: '36px',
       lineHeight: '50px',
@@ -70,12 +72,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
   content: {
-    fontFamily: 'Poppins',
-    fontSize: '20px',
-    fontWeight: '400',
-    lineHeight: '30px',
+    fontFamily: 'Playfair Display',
+    fontSize: '3.5em',
+    fontWeight: '700',
+    lineHeight: '50px',
     marginTop: '.2em',
-    marginBottom: '1.5em',
+    marginBottom: '1em',
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
       textAlign: 'justify',
@@ -83,12 +85,11 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     borderRadius: '50px',
-    background: '#3D8754',
+    background: '#717fe0',
     color: '#fff',
-    padding: '20px',
-    textTransform: 'capitalize',
-    width: '176px',
-    height: '67px',
+    padding: '15px 40px',
+    textTransform: 'uppercase',
+
     fontFamily: 'Poppins',
     fontSize: '18px',
     fontWeight: '500',
@@ -136,7 +137,7 @@ export default function Home() {
                 </Typography>
                 <Link href='/shop'>
                   <Button variat='contained' className={classes.button}>
-                    Buy Now
+                    Shop Now
                   </Button>
                 </Link>
               </Box>

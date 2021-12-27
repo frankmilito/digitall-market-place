@@ -1,61 +1,61 @@
-import React from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react'
+import {Box, Grid, Typography} from '@material-ui/core'
+import {makeStyles} from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   box: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   wrapper: {
-    width: "80%",
-    margin: "2em 0 5em 0",
-    [theme.breakpoints.down("md")]: {
-      margin: "1em 0 3em 0",
+    width: '80%',
+    margin: '2em 0 5em 0',
+    [theme.breakpoints.down('md')]: {
+      margin: '1em 0 3em 0',
     },
   },
   container: {
-    display: "flex",
-    justifyContent: "center",
-    margin: "1em 0",
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '1em 0',
   },
   title: {
-    fontFamily: "Poppins",
-    fontSize: "40px",
-    fontWeight: "700",
-    lineHeight: "60px",
-    marginLeft: "10px",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "30px",
-      fontWeight: "700",
-      lineHeight: "40px",
-      textAlign: "center",
+    fontFamily: 'Poppins',
+    fontSize: '40px',
+    fontWeight: '700',
+    lineHeight: '60px',
+    marginLeft: '10px',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '30px',
+      fontWeight: '700',
+      lineHeight: '40px',
+      textAlign: 'center',
     },
   },
   content1: {
-    fontFamily: "Poppins",
-    fontSize: "15px",
-    fontWeight: "400",
-    lineHeight: "28px",
-    marginTop: ".2em",
-    marginBottom: "1em",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "14px",
-      lineHeight: "30px",
-      textAlign: "justify",
+    fontFamily: 'Poppins',
+    fontSize: '15px',
+    fontWeight: '400',
+    lineHeight: '28px',
+    marginTop: '.2em',
+    marginBottom: '1em',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '14px',
+      lineHeight: '30px',
+      textAlign: 'justify',
     },
   },
-}));
+}))
 
 function ProductBenefits() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <>
       <Box className={classes.box}>
         <Grid container className={classes.wrapper}>
           <Grid item md={6}>
-            <Typography variant="h2" className={classes.title}>
-              Health benefits of our product
+            <Typography variant='h2' className={classes.title}>
+              Product Overview
             </Typography>
           </Grid>
           <Grid item container className={classes.container}>
@@ -89,7 +89,7 @@ function ProductBenefits() {
         </Grid>
       </Box>
     </>
-  );
+  )
 }
 
-export default ProductBenefits;
+export default ProductBenefits
