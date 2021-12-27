@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Box, Grid, Typography} from '@material-ui/core'
+import {Box, CircularProgress, Grid, Typography} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import {getAllProduct} from '../../redux/actions/products'
 import {useDispatch, useSelector} from 'react-redux'
+import {useRouter} from 'next/router'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
@@ -31,7 +32,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '40px',
     fontWeight: '700',
     lineHeight: '60px',
-    marginLeft: '10px',
+    // marginLeft: '10px',
+    marginTop: '2em',
     [theme.breakpoints.down('md')]: {
       fontSize: '30px',
       fontWeight: '700',
@@ -73,6 +75,9 @@ const useStyles = makeStyles(theme => ({
       textAlign: 'left',
     },
   },
+  media: {
+    height: 300,
+  },
   cardContent: {
     color: '#999',
     fontFamily: 'Poppins',
@@ -84,19 +89,33 @@ const useStyles = makeStyles(theme => ({
   btn: {
     width: '100%',
   },
-  media: {
-    '&:hover': {
-      transform: 'scale(1.5)',
-    },
+  progress: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
 }))
 
 function ProductsOverview() {
+  const router = useRouter()
+  const classes = useStyles()
+  const [loading, setLoading] = useState(false)
+  const {products} = useSelector(state => state.products)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getAllProduct(() => {}))
+    setLoading(true)
+    dispatch(
+      getAllProduct(() => {
+        setLoading(false)
+      })
+    )
   }, [])
-  const classes = useStyles()
+
+  const trimmedString = str => {
+    length = 12
+    return str.substring(0, length)
+  }
   return (
     <>
       <Box className={classes.box}>
@@ -107,44 +126,64 @@ function ProductsOverview() {
             </Typography>
           </Grid>
           <Grid item md={12} className={classes.products}>
-            <Typography className={classes.content1}>All Products</Typography>
+            {/* <Typography className={classes.content1}>All Products</Typography> */}
             {/* <Typography className={classes.content1}>Women</Typography>
             <Typography className={classes.content1}>Men</Typography>
             <Typography className={classes.content1}>Jewelry</Typography> */}
           </Grid>
           <Grid item container className={classes.container}>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                  className={classes.media}
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+            {loading ? (
+              <div className={classes.progress}>
+                <CircularProgress />
+              </div>
+            ) : products && products.length > 0 ? (
+              products.map(product => (
+                <Grid item xs={12} sm={12} md={3} className={classes.product}>
+                  <Card className={classes.card} elevation={0}>
+                    <CardMedia
+                      component='img'
+                      image={product.image}
+                      alt='product'
+                      className={classes.media}
+                    />
+                    <CardContent>
+                      <Typography
+                        variant='h5'
+                        component='div'
+                        className={classes.cardContent}
+                      >
+                        {trimmedString(product.title)}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size='small'
+                        variant='contained'
+                        color='primary'
+                        fullWidth
+                        className={classes.btn}
+                        onClick={() => router.push(`/products/${product.id}`)}
+                      >
+                        Quick View{' '}
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            ) : (
+              ''
+            )}
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  )
+}
+
+export default ProductsOverview
+
+{
+  /* <Grid item xs={12} sm={12} md={3} className={classes.product}>
               <Card className={classes.card} elevation={0}>
                 <CardMedia
                   component='img'
@@ -293,12 +332,5 @@ function ProductsOverview() {
                   </Button>
                 </CardActions>
               </Card>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
-    </>
-  )
+            </Grid> */
 }
-
-export default ProductsOverview

@@ -7,11 +7,11 @@ import axios from 'axios'
 export const getSingleProduct = (data, cb) => async dispatch => {
   try {
     const res = await callApi(`products/${data}`, 'GET')
-
-    if (res.code === '00') {
+    console.log(res, 'single product')
+    if (res) {
       dispatch({
         type: GET_SINGLE_PRODUCTS,
-        payload: res.data,
+        payload: res,
       })
     } else {
       Swal.fire({
@@ -36,16 +36,6 @@ export const getAllProduct = cb => async dispatch => {
   try {
     const res = await callApi('products', 'GET')
     console.log(res, 'response')
-    // const res = axios
-    //   .get('https://fakestoreapi.com/')
-    //   .then(response => {
-    //     // handle success
-    //     console.log(response)
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error)
-    //   })
 
     if (res) {
       dispatch({

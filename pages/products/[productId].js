@@ -11,9 +11,7 @@ import {
   IconButton,
   Typography,
   makeStyles,
-  MenuItem,
 } from '@material-ui/core'
-
 import {getAllProduct, getSingleProduct} from '../../redux/actions/products'
 import {addToCart, adjustQuantity} from '../../redux/actions/cart'
 import useFunctions from '../../UtilityService/useFunctions'
@@ -92,6 +90,17 @@ const useStyles = makeStyles(theme => ({
       lineHeight: '24px',
     },
   },
+  description: {
+    fontFamily: 'Poppins',
+    fontSize: '20px',
+    fontWeight: 300,
+    textTransform: 'capitalize',
+    margin: '1em 0 ',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '20px',
+      lineHeight: '24px',
+    },
+  },
   add: {
     fontFamily: 'Poppins',
     fontSize: '18px',
@@ -103,20 +112,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: '24px',
     },
   },
-  view: {
-    fontFamily: 'Poppins',
-    fontSize: '18px',
-    fontWeight: '500',
-    main: '#3D8754',
-    color: '#3D8754',
-    textDecoration: 'underline',
-    cursor: 'pointer',
 
-    [theme.breakpoints.down('md')]: {
-      fontSize: '20px',
-      lineHeight: '24px',
-    },
-  },
   items: {},
 }))
 function ProductDetails() {
@@ -126,19 +122,19 @@ function ProductDetails() {
   const toast = useFunctions()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  //   const {product, cart} = useSelector(state => state.products)
+  const {product, cart} = useSelector(state => state.products)
 
-  const productID = router.query.itemId
-  //   useEffect(() => {
-  //     setLoading(true)
-  //     if (productID) {
-  //       dispatch(
-  //         getSingleProduct(productID, () => {
-  //           setLoading(false)
-  //         })
-  //       )
-  //     }
-  //   }, [productID])
+  const productID = router.query.productId
+  useEffect(() => {
+    setLoading(true)
+    if (productID) {
+      dispatch(
+        getSingleProduct(productID, () => {
+          setLoading(false)
+        })
+      )
+    }
+  }, [productID])
 
   //   useEffect(() => {
   //     let cartCount = 0
@@ -167,7 +163,7 @@ function ProductDetails() {
             {loading && <CircularProgress />}
             <Box>
               <img
-                src='/images/girl.webp'
+                src={product?.image}
                 alt='product '
                 className={classes.logo}
               />
@@ -175,14 +171,14 @@ function ProductDetails() {
           </Grid>
           <Grid item xs={12} md={5} className={classes.items}>
             <Typography className={classes.title}>
-              <small className={classes.grams}>Products name</small>
+              <small className={classes.grams}>{product?.title}</small>
             </Typography>
-            <Typography className={classes.content}>€ 5000</Typography>
+            <Typography className={classes.content}>
+              € {product?.price}
+            </Typography>
             {/* <Link href="#"> */}
             <Typography className={classes.description}>
-              Product description Lorem ipsum dolor, sit amet consectetur
-              adipisicing elit. Reprehenderit accusantium officiis consequatur
-              impedit omnis reiciendis!
+              {product?.description}
             </Typography>
             <Button
               variant='contained'
