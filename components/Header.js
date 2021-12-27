@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   navlinks: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     padding: '1em 0',
   },
   logo: {
@@ -105,19 +105,19 @@ function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  // const open = Boolean(anchorEl)
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget)
-  }
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  // const handleClick = event => {
+  //   setAnchorEl(event.currentTarget)
+  // }
+  // const handleClose = () => {
+  //   setAnchorEl(null)
+  // }
 
   const closehandler = () => {
     setOpenDrawer(false)
   }
-  const cartLength = cart.length
+
   useEffect(() => {
     let cartCount = 0
     cart.forEach(item => {
@@ -128,10 +128,6 @@ function Header() {
 
   const toggle = () => {
     setOpenDropDown(true)
-  }
-  const handleScroll = () => {
-    const anchor = document.querySelector('#some-id')
-    anchor.scrollIntoView({behavior: 'smooth', block: 'center'})
   }
 
   return (
@@ -164,7 +160,7 @@ function Header() {
                 </Box>
               </>
             ) : (
-              <Grid item sm={7}>
+              <Grid item sm={7} md={5}>
                 <div className={classes.navlinks}>
                   <>
                     <Typography
@@ -185,24 +181,11 @@ function Header() {
                       variant='body1'
                     >
                       <Link
-                        href='#some-id'
+                        href='#'
 
                         // style={{ textDecoration: "none" }}
                       >
                         <ListItem> Products</ListItem>
-                      </Link>
-                    </Typography>
-
-                    <Typography
-                      variant='body1'
-                      className={classes.links}
-                      variant='body1'
-                    >
-                      <Link
-                        href='/contact-us'
-                        // style={{ textDecoration: "none" }}
-                      >
-                        <ListItem>Contact us</ListItem>
                       </Link>
                     </Typography>
 

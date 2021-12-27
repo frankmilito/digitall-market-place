@@ -35,6 +35,34 @@ export const getSingleProduct = (data, cb) => async dispatch => {
 export const getAllProduct = cb => async dispatch => {
   try {
     const res = await callApi('products', 'GET')
+
+    if (res) {
+      dispatch({
+        type: GET_ALL_PRODUCTS,
+        payload: res,
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error occured',
+        text: res.message,
+      })
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error occured',
+      text: 'Oops! something went wrong',
+    })
+  } finally {
+    cb()
+  }
+}
+
+export const sortedProducts = (data, cb) => async dispatch => {
+  const url = data === 'All' ? 'products' : `products/category/${data}`
+  try {
+    const res = await callApi(url, 'GET')
     console.log(res, 'response')
 
     if (res) {
@@ -59,9 +87,3 @@ export const getAllProduct = cb => async dispatch => {
     cb()
   }
 }
-// export const getAllProduct = () => {
-//   axios
-//     .get('https://fakestoreapi.com/products')
-//     .then(response => console.log(response))
-//     .catch(error => console.log(error))
-// }

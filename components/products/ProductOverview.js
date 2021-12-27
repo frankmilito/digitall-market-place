@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from 'react'
-import {Box, CircularProgress, Grid, Typography} from '@material-ui/core'
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  MenuItem,
+  Typography,
+} from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
 import {makeStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
-import {getAllProduct} from '../../redux/actions/products'
+import {getAllProduct, sortedProducts} from '../../redux/actions/products'
 import {useDispatch, useSelector} from 'react-redux'
 import {useRouter} from 'next/router'
 const useStyles = makeStyles(theme => ({
@@ -57,10 +64,10 @@ const useStyles = makeStyles(theme => ({
   products: {
     display: 'flex',
     // justifyContent: 'space-around',
-    marginBottom: '2em',
+    marginBottom: '3em',
   },
   product: {
-    marginBottom: '20px',
+    marginBottom: '40px',
   },
   card: {
     width: '90%',
@@ -95,14 +102,26 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     textAlign: 'center',
   },
+  menuItems: {
+    textTransform: 'capitalize',
+  },
 }))
 
 function ProductsOverview() {
   const router = useRouter()
+  const dispatch = useDispatch()
   const classes = useStyles()
   const [loading, setLoading] = useState(false)
+  const [sortedValue, setSortedValue] = useState('')
   const {products} = useSelector(state => state.products)
-  const dispatch = useDispatch()
+
+  const sortParams = [
+    'All',
+    'electronics',
+    'jewelery',
+    "men's clothing",
+    "women's clothing",
+  ]
   useEffect(() => {
     setLoading(true)
     dispatch(
@@ -116,20 +135,40 @@ function ProductsOverview() {
     length = 12
     return str.substring(0, length)
   }
+
+  const handleChange = e => {
+    setSortedValue(e.target.value)
+    setLoading(true)
+    dispatch(sortedProducts(e.target.value, () => setLoading(false)))
+  }
   return (
     <>
       <Box className={classes.box}>
         <Grid container className={classes.wrapper}>
-          <Grid item md={6} id='#some-id'>
+          <Grid item md={12} id='#some-id'>
             <Typography variant='h2' className={classes.title}>
               Product Overview
             </Typography>
           </Grid>
-          <Grid item md={12} className={classes.products}>
-            {/* <Typography className={classes.content1}>All Products</Typography> */}
-            {/* <Typography className={classes.content1}>Women</Typography>
-            <Typography className={classes.content1}>Men</Typography>
-            <Typography className={classes.content1}>Jewelry</Typography> */}
+          <Grid item md={4} className={classes.products}>
+            <TextField
+              select
+              fullWidth
+              label='Sort By'
+              onChange={handleChange}
+              value={sortedValue}
+              variant='filled'
+            >
+              {sortParams.map(params => (
+                <MenuItem
+                  value={params}
+                  key={params}
+                  className={classes.menuItems}
+                >
+                  {params}
+                </MenuItem>
+              ))}
+            </TextField>
           </Grid>
           <Grid item container className={classes.container}>
             {loading ? (

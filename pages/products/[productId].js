@@ -15,6 +15,7 @@ import {
 import {getAllProduct, getSingleProduct} from '../../redux/actions/products'
 import {addToCart, adjustQuantity} from '../../redux/actions/cart'
 import useFunctions from '../../UtilityService/useFunctions'
+import {formatMoney} from '../../UtilityService/Helpers'
 
 const useStyles = makeStyles(theme => ({
   quantityValue: {
@@ -136,20 +137,20 @@ function ProductDetails() {
     }
   }, [productID])
 
-  //   useEffect(() => {
-  //     let cartCount = 0
+  useEffect(() => {
+    let cartCount = 0
 
-  //     // cart.forEach((item) => {
-  //     //   cartCount += item.qty;
-  //     //   setCartCount(cartCount);
-  //     // });
-  //     for (let i = 0; i < cart.length; i++) {
-  //       if (cart[i].product_id === product.product_id) {
-  //         cartCount += cart[i].qty
-  //         setCartCount(cartCount)
-  //       }
-  //     }
-  //   }, [cart, cartCount])
+    // cart.forEach((item) => {
+    //   cartCount += item.qty;
+    //   setCartCount(cartCount);
+    // });
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].product_id === product.product_id) {
+        cartCount += cart[i].qty
+        setCartCount(cartCount)
+      }
+    }
+  }, [cart, cartCount])
   const addCart = id => {
     dispatch(addToCart(id))
     toast()
@@ -174,7 +175,7 @@ function ProductDetails() {
               <small className={classes.grams}>{product?.title}</small>
             </Typography>
             <Typography className={classes.content}>
-              € {product?.price}
+              {formatMoney(product?.price)}
             </Typography>
             {/* <Link href="#"> */}
             <Typography className={classes.description}>
@@ -183,7 +184,7 @@ function ProductDetails() {
             <Button
               variant='contained'
               color='primary'
-              onClick={() => addCart()}
+              onClick={() => addCart(product?.id)}
               className={classes.button}
             >
               Add to cart

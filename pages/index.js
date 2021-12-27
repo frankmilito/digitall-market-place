@@ -139,18 +139,14 @@ export default function Home() {
                 </Link>
               </Box>
             </Grid>
-            <Grid item item xs={12} sm={12} md={5} className={classes.order1}>
-              {/* <Image
-                src='/images/bowl.png'
-                alt='Powdered nuts'
-                className={classes.logo}
-                width='600px'
-                height='500px'
-                placeholder='blur'
-                priority={true}
-                // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-              /> */}
-            </Grid>
+            <Grid
+              item
+              item
+              xs={12}
+              sm={12}
+              md={5}
+              className={classes.order1}
+            ></Grid>
           </Grid>
         </Box>
 
