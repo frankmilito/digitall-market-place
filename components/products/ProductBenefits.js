@@ -1,7 +1,11 @@
 import React from 'react'
 import {Box, Grid, Typography} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
-
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
@@ -16,11 +20,12 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     margin: '1em 0',
   },
   title: {
     fontFamily: 'Poppins',
+    textTransform: 'uppercase',
     fontSize: '40px',
     fontWeight: '700',
     lineHeight: '60px',
@@ -45,6 +50,31 @@ const useStyles = makeStyles(theme => ({
       textAlign: 'justify',
     },
   },
+  products: {
+    display: 'flex',
+    // justifyContent: 'space-around',
+    marginBottom: '2em',
+  },
+  product: {
+    marginBottom: '20px',
+  },
+  card: {
+    // padding: '1em 0',
+    width: '90%',
+    border: '1px solid #d3d3d3',
+    display: 'flex',
+    justifyContent: 'center',
+    borderRadius: '5px',
+    alignItems: 'center',
+    flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+      padding: '1em',
+      textAlign: 'center',
+    },
+  },
+  btn: {
+    width: '100%',
+  },
 }))
 
 function ProductBenefits() {
@@ -58,32 +88,168 @@ function ProductBenefits() {
               Product Overview
             </Typography>
           </Grid>
+          <Grid item md={12} className={classes.products}>
+            <Typography className={classes.content1}>All Products</Typography>
+            {/* <Typography className={classes.content1}>Women</Typography>
+            <Typography className={classes.content1}>Men</Typography>
+            <Typography className={classes.content1}>Jewelry</Typography> */}
+          </Grid>
           <Grid item container className={classes.container}>
-            <Grid item xs={12} sm={12} md={6}>
-              <ul>
-                <li className={classes.content1}>
-                  Dates are high in magnesium and potassium which play
-                  significant roles in blood sugar control. The potassium helps
-                  to reduce cholesterol and keeps the risk of stroke in check
-                </li>
-                <li className={classes.content1}>
-                  They are a good source probiotics, phytonutrients and soluble
-                  fibre which improves digestive health and may prevent colon
-                  cancer.
-                </li>
-              </ul>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
             </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <ul>
-                <li className={classes.content1}>
-                  Dates are a low Glycemic index fruit and suitable for
-                  diabetics and pre-diabetics, in moderation.
-                </li>
-                <li className={classes.content1}>
-                  Dates contain potent antioxidants and are high in polyphenols
-                  which can reduce inflammation in the body
-                </li>
-              </ul>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={12} md={3} className={classes.product}>
+              <Card className={classes.card} elevation={0}>
+                <CardMedia
+                  component='img'
+                  height='100%'
+                  image='/images/girl.webp'
+                  alt='product'
+                />
+                <CardContent>
+                  <Typography variant='h5' component='div'>
+                    Lizard
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='primary'
+                    fullWidth
+                    className={classes.btn}
+                  >
+                    Quick View{' '}
+                  </Button>
+                </CardActions>
+              </Card>
             </Grid>
           </Grid>
         </Grid>

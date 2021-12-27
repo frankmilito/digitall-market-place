@@ -159,7 +159,6 @@ export default function Home() {
 
         <Box>
           <ProductBenefits />
-          <ProductSection />
         </Box>
       </div>
     </>
