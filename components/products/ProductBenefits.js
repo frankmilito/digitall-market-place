@@ -59,21 +59,33 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '20px',
   },
   card: {
-    // padding: '1em 0',
     width: '90%',
-    border: '1px solid #d3d3d3',
-    display: 'flex',
-    justifyContent: 'center',
+    border: '1px solid #f3f3f3',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     borderRadius: '5px',
-    alignItems: 'center',
     flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
       padding: '1em',
-      textAlign: 'center',
+      textAlign: 'left',
     },
+  },
+  cardContent: {
+    color: '#999',
+    fontFamily: 'Poppins',
+    fontSize: '16px',
+    fontWeight: '400',
+    padding: '0 !important',
+    // textAlign: 'left',
   },
   btn: {
     width: '100%',
+  },
+  media: {
+    '&:hover': {
+      transform: 'scale(1.5)',
+    },
   },
 }))
 
@@ -102,10 +114,15 @@ function ProductBenefits() {
                   height='100%'
                   image='/images/girl.webp'
                   alt='product'
+                  className={classes.media}
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -130,8 +147,12 @@ function ProductBenefits() {
                   alt='product'
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt{' '}
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -156,8 +177,12 @@ function ProductBenefits() {
                   alt='product'
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -182,8 +207,12 @@ function ProductBenefits() {
                   alt='product'
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -208,8 +237,12 @@ function ProductBenefits() {
                   alt='product'
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -234,8 +267,12 @@ function ProductBenefits() {
                   alt='product'
                 />
                 <CardContent>
-                  <Typography variant='h5' component='div'>
-                    Lizard
+                  <Typography
+                    variant='h5'
+                    component='div'
+                    className={classes.cardContent}
+                  >
+                    Esprit Ruffle Shirt
                   </Typography>
                 </CardContent>
                 <CardActions>

@@ -10,9 +10,6 @@ import {
 import React, {useState, useEffect} from 'react'
 import Footer from '../components/Footer'
 import ProductBenefits from '../components/products/ProductBenefits'
-import Products from '../components/products/Products'
-import ProductSection from '../components/products/ProductSection'
-import Image from 'next/image'
 import Link from 'next/link'
 // import background from './images/christian.png'
 
