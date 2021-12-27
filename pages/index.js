@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import React, {useState, useEffect} from 'react'
 import Footer from '../components/Footer'
-import ProductBenefits from '../components/products/ProductBenefits'
+import ProductOverview from '../components/products/ProductOverview'
 import Link from 'next/link'
 // import background from './images/christian.png'
 
@@ -155,7 +155,7 @@ export default function Home() {
         </Box>
 
         <Box>
-          <ProductBenefits />
+          <ProductOverview />
         </Box>
       </div>
     </>

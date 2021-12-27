@@ -89,7 +89,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ProductBenefits() {
+function ProductsOverview() {
   const classes = useStyles()
   return (
     <>
@@ -295,4 +295,4 @@ function ProductBenefits() {
   )
 }
 
-export default ProductBenefits
+export default ProductsOverview
