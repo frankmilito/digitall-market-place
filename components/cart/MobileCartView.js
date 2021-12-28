@@ -266,6 +266,7 @@ const MobileCartView = () => {
         Swal.fire({
           icon: 'success',
           title: 'Payment was successfull',
+          text: `Transaction Reference ${response.reference}`,
         })
       },
       onClose: function () {
