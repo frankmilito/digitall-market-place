@@ -74,9 +74,6 @@ const useStyles = makeStyles(theme => ({
   card: {
     width: '90%',
     border: '1px solid #f3f3f3',
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
     borderRadius: '5px',
     flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
@@ -93,7 +90,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: '16px',
     fontWeight: '400',
     padding: '0 !important',
-    // textAlign: 'left',
   },
   btn: {
     width: '100%',

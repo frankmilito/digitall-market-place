@@ -185,6 +185,35 @@ function Cart() {
     setTotalPrice(price)
   }, [cart])
 
+  function payWithPaystack() {
+    var handler = PaystackPop.setup({
+      key: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
+      email: 'frankstores@gmail.com',
+      amount: totalPrice * 100,
+      currency: 'EUR',
+      metadata: {
+        custom_fields: [
+          {
+            display_name: 'franklin',
+            variable_name: 'obidike',
+            value: '+2348012345678',
+          },
+        ],
+      },
+      callback: function (response) {
+        console.log(response)
+        Swal.fire({
+          icon: 'success',
+          title: 'Payment was successfull',
+        })
+      },
+      onClose: function () {
+        console.log('closed')
+      },
+    })
+    handler.openIframe()
+  }
+
   return (
     <>
       <Head>
@@ -241,7 +270,7 @@ function Cart() {
                 Total
               </Typography>
               <Typography variant='body2' className={classes.total}>
-                {/* ₦{totalPrice.toFixed(2)} */} {formatMoney(totalPrice)}
+                {formatMoney(totalPrice)}
               </Typography>
             </Grid>
             {/* ROW 4 */}
@@ -254,18 +283,18 @@ function Cart() {
               >
                 Buy More
               </Button>
-              {/* {cart.length > 0 ? (
+              {cart.length > 0 ? (
                 <Button
                   variant='contained'
                   color='primary'
                   className={classes.btn}
-                  onClick={() => router.push('/check-out')}
+                  onClick={payWithPaystack}
                 >
                   Checkout
                 </Button>
               ) : (
                 ''
-              )} */}
+              )}
             </Grid>
           </Grid>
         </div>

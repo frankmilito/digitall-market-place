@@ -241,7 +241,6 @@ const CartItem = ({item}) => {
       </Grid>
       <Grid item xs={2} className={classes.quantityCell}>
         <Typography variant='caption' className={classes.money}>
-          {/* ₦ */}
           {formatMoney(item.price)}
         </Typography>
       </Grid>

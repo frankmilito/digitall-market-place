@@ -22,7 +22,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import {formatMoney} from '../../UtilityService/Helpers'
 import router from 'next/router'
 import useFunctions from '../../UtilityService/useFunctions'
-import {usePaystackPayment} from 'react-paystack'
 const useStyles = makeStyles(theme => ({
   container: {
     width: '100%',
@@ -246,38 +245,17 @@ const MobileCartView = () => {
     }
   }
 
-  const config = {
-    reference: new Date().getTime(),
-    email: 'frankobidike20@gmail.com',
-    amount: totalPrice * 100,
-    publicKey: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
-  }
-
-  const onSuccess = reference => {
-    console.log(reference)
-  }
-
-  const onClose = () => {
-    console.log('closed')
-  }
-
-  const initializePayment = usePaystackPayment(config)
-
-  // const checkout = () => {
-  //   initializePayment(onSuccess, onClose)
-  // }
-
   function payWithPaystack() {
     var handler = PaystackPop.setup({
       key: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
-      email: 'franks&stores@gmail.com',
+      email: 'frankstores@gmail.com',
       amount: totalPrice * 100,
       currency: 'EUR',
       metadata: {
         custom_fields: [
           {
-            display_name: 'Mobile Number',
-            variable_name: 'mobile_number',
+            display_name: 'franklin',
+            variable_name: 'obidike',
             value: '+2348012345678',
           },
         ],
@@ -316,7 +294,6 @@ const MobileCartView = () => {
         {cart.length > 0 &&
           cart.map(item => (
             <Grid container className={classes.wrapper}>
-              {/* Dates Syrup */}
               <Grid item xs={12} className={classes.fruitContainer}>
                 <Box>
                   <img
