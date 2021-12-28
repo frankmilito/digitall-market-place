@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   wrapper: {
-    background: `url('/images/christian1.png')`,
+    background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('/images/christian1.png');`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -32,10 +33,12 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     position: 'relative',
     width: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       // marginBottom: "8em",
       padding: '0 2em',
-      // height: "80vh",
+      // height: '100%',
+      background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6  )),
+    url('/images/christian1.png');`,
     },
   },
   container: {
@@ -48,13 +51,6 @@ const useStyles = makeStyles(theme => ({
       padding: 0,
     },
   },
-  logo: {
-    maxWidth: '100%',
-    [theme.breakpoints.only('sm')]: {
-      width: '300px',
-      height: '300px',
-    },
-  },
   title: {
     fontFamily: 'Poppins',
     fontSize: '28px',
@@ -63,9 +59,10 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '20px',
     textTransform: 'capitalize',
     [theme.breakpoints.down('md')]: {
-      fontSize: '36px',
+      fontSize: '18px',
       lineHeight: '50px',
-      textAlign: 'justify',
+      textAlign: 'center',
+      color: '#fff',
     },
   },
   content: {
@@ -76,8 +73,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: '.2em',
     marginBottom: '1em',
     [theme.breakpoints.down('md')]: {
-      fontSize: '16px',
-      textAlign: 'justify',
+      fontSize: '3em',
+      textAlign: 'center',
+      color: '#fff',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2.2em',
     },
   },
   button: {
@@ -91,8 +92,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '18px',
     fontWeight: '500',
     [theme.breakpoints.down('sm')]: {
-      width: '105px',
-      height: '43px',
+      width: '100%',
       fontSize: '14px',
     },
   },
@@ -132,7 +132,7 @@ export default function Home() {
                 <Typography variant='body1' className={classes.content}>
                   JACKETS & COATS
                 </Typography>
-                <Link href='/shop'>
+                <Link href='/products'>
                   <Button variat='contained' className={classes.button}>
                     Shop Now
                   </Button>

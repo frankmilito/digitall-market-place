@@ -124,11 +124,11 @@ function ProductsOverview() {
   ]
   useEffect(() => {
     setLoading(true)
-    dispatch(
-      getAllProduct(() => {
-        setLoading(false)
-      })
-    )
+    if (products.length === 0) {
+      dispatch(getAllProduct(() => setLoading(false)))
+    } else {
+      setLoading(false)
+    }
   }, [])
 
   const trimmedString = str => {

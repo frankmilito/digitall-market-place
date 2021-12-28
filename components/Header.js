@@ -181,7 +181,7 @@ function Header() {
                       variant='body1'
                     >
                       <Link
-                        href='#'
+                        href='/products'
 
                         // style={{ textDecoration: "none" }}
                       >
