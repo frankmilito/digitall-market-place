@@ -14,6 +14,7 @@ import {formatMoney} from '../../UtilityService/Helpers'
 import Head from 'next/head'
 import MobileCartView from '../../components/cart/MobileCartView'
 import {ShoppingCart} from '@material-ui/icons'
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles(theme => ({
   root: {
