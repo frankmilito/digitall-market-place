@@ -59,6 +59,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Playfair Display',
     fontSize: '1.8em',
     fontWeight: 700,
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.5em',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1em',
+    },
   },
   links: {
     fontFamily: 'Poppins',
@@ -103,16 +109,6 @@ function Header() {
   const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
-  const [anchorEl, setAnchorEl] = useState(null)
-  // const open = Boolean(anchorEl)
-
-  // const handleClick = event => {
-  //   setAnchorEl(event.currentTarget)
-  // }
-  // const handleClose = () => {
-  //   setAnchorEl(null)
-  // }
 
   const closehandler = () => {
     setOpenDrawer(false)

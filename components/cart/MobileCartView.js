@@ -8,17 +8,20 @@ import {
 } from '@material-ui/core'
 import React, {useState, useEffect} from 'react'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined'
-import {addToCart, adjustQuantity, removeFromCart} from '../redux/actions/cart'
+import {
+  addToCart,
+  adjustQuantity,
+  removeFromCart,
+} from '../../redux/actions/cart'
 import {
   AddCircleOutline,
   RemoveCircleOutline,
   ShoppingCart,
 } from '@material-ui/icons'
 import {useSelector, useDispatch} from 'react-redux'
-import {formatMoney} from '../UtilityService/Helpers'
+import {formatMoney} from '../../UtilityService/Helpers'
 import router from 'next/router'
-import useFunctions from '../UtilityService/useFunctions'
+import useFunctions from '../../UtilityService/useFunctions'
 import {usePaystackPayment} from 'react-paystack'
 const useStyles = makeStyles(theme => ({
   container: {
@@ -349,7 +352,7 @@ const MobileCartView = () => {
             </Box>
           </Grid>
           <Grid item className={classes.buttomItem2}>
-            {cart.length === 0 ? (
+            {/* {cart.length === 0 ? (
               ''
             ) : (
               <Button
@@ -361,7 +364,7 @@ const MobileCartView = () => {
               >
                 Checkout
               </Button>
-            )}
+            )} */}
             <Button
               variant='outlined'
               color='primary'

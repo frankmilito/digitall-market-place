@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Typography,
-  makeStyles,
-  Card,
-  CircularProgress,
-} from '@material-ui/core'
-import React, {useState, useEffect} from 'react'
-import Footer from '../components/Footer'
+import {Box, Button, Grid, Typography, makeStyles} from '@material-ui/core'
 import ProductOverview from '../components/products/ProductOverview'
 import Link from 'next/link'
 // import background from './images/christian.png'
@@ -34,11 +24,8 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-      // marginBottom: "8em",
       padding: '0 2em',
-      // height: '100%',
-      background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6  )),
-    url('/images/christian1.png');`,
+      background: '#222',
     },
   },
   container: {
@@ -59,10 +46,14 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '20px',
     textTransform: 'capitalize',
     [theme.breakpoints.down('md')]: {
-      fontSize: '18px',
+      fontSize: '24px',
       lineHeight: '50px',
-      textAlign: 'center',
+      textAlign: 'justify',
       color: '#fff',
+      marginBottom: '10px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
     },
   },
   content: {
@@ -74,11 +65,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '1em',
     [theme.breakpoints.down('md')]: {
       fontSize: '3em',
-      textAlign: 'center',
+      textAlign: 'justify',
       color: '#fff',
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: '2.2em',
+      textAlign: 'center',
     },
   },
   button: {
@@ -87,33 +79,12 @@ const useStyles = makeStyles(theme => ({
     color: '#fff',
     padding: '15px 40px',
     textTransform: 'uppercase',
-
     fontFamily: 'Poppins',
     fontSize: '18px',
     fontWeight: '500',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       fontSize: '14px',
-    },
-  },
-
-  products: {
-    width: '80%',
-    position: 'relative',
-    top: '-120px',
-    [theme.breakpoints.down('sm')]: {
-      top: '0',
-      width: '100%',
-    },
-  },
-  order2: {
-    [theme.breakpoints.down('sm')]: {
-      order: '2',
-    },
-  },
-  order1: {
-    [theme.breakpoints.down('sm')]: {
-      order: '1',
     },
   },
 }))

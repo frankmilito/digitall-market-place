@@ -6,6 +6,7 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core'
+import Head from 'next/head'
 import TextField from '@material-ui/core/TextField'
 import {makeStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -19,7 +20,8 @@ import {useRouter} from 'next/router'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
   },
   wrapper: {
     width: '80%',
@@ -40,12 +42,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: '700',
     lineHeight: '60px',
     // marginLeft: '10px',
+    marginBottom: '1em',
     marginTop: '2em',
     [theme.breakpoints.down('md')]: {
-      fontSize: '30px',
-      fontWeight: '700',
+      fontSize: '20px',
       lineHeight: '40px',
       textAlign: 'center',
+      marginBottom: '1.5em',
     },
   },
   content1: {
@@ -63,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
   products: {
     display: 'flex',
-    // justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     marginBottom: '3em',
   },
   product: {
@@ -143,34 +146,44 @@ function ProductsOverview() {
   }
   return (
     <>
+      <Head>
+        <title>Frank & Stores - Products</title>
+        <meta name='description' content='Digital market place' />
+        <meta
+          name='viewport'
+          content='minimum-scale=1, initial-scale=1, width=device-width'
+        />
+      </Head>
       <Box className={classes.box}>
         <Grid container className={classes.wrapper}>
-          <Grid item md={12} id='#some-id'>
-            <Typography variant='h2' className={classes.title}>
-              Product Overview
-            </Typography>
+          <Grid item container xs={12}>
+            <Grid item md={12}>
+              <Typography variant='h2' className={classes.title}>
+                Product Overview
+              </Typography>
+            </Grid>
+            <Grid item xs={10} md={10} className={classes.products}>
+              <TextField
+                select
+                fullWidth
+                label='Sort Products By'
+                onChange={handleChange}
+                value={sortedValue}
+                variant='filled'
+              >
+                {sortParams.map(params => (
+                  <MenuItem
+                    value={params}
+                    key={params}
+                    className={classes.menuItems}
+                  >
+                    {params}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
           </Grid>
-          <Grid item md={4} className={classes.products}>
-            <TextField
-              select
-              fullWidth
-              label='Sort By'
-              onChange={handleChange}
-              value={sortedValue}
-              variant='filled'
-            >
-              {sortParams.map(params => (
-                <MenuItem
-                  value={params}
-                  key={params}
-                  className={classes.menuItems}
-                >
-                  {params}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item container className={classes.container}>
+          {/* <Grid item container className={classes.container}>
             {loading ? (
               <div className={classes.progress}>
                 <CircularProgress />
@@ -212,7 +225,7 @@ function ProductsOverview() {
             ) : (
               ''
             )}
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </>
@@ -220,156 +233,3 @@ function ProductsOverview() {
 }
 
 export default ProductsOverview
-
-{
-  /* <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt{' '}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={3} className={classes.product}>
-              <Card className={classes.card} elevation={0}>
-                <CardMedia
-                  component='img'
-                  height='100%'
-                  image='/images/girl.webp'
-                  alt='product'
-                />
-                <CardContent>
-                  <Typography
-                    variant='h5'
-                    component='div'
-                    className={classes.cardContent}
-                  >
-                    Esprit Ruffle Shirt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                    className={classes.btn}
-                  >
-                    Quick View{' '}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid> */
-}

@@ -4,8 +4,7 @@ import {
   GET_SINGLE_PRODUCTS,
   REMOVE_FROM_CART,
   ADJUST_QTY,
-  GET_ID,
-  CLEAR_CART,
+  CLEAR_SINGLE_PRODUCT,
 } from '../actions/Contants'
 
 const initState = {
@@ -55,7 +54,11 @@ export const productsReducer = (state = initState, action) => {
         ...state,
         cart: state.cart.filter(item => item.id !== action.payload),
       }
-
+    case CLEAR_SINGLE_PRODUCT:
+      return {
+        ...state,
+        product: {},
+      }
     default:
       return state
   }

@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {Grid, Button, Typography, IconButton, Box} from '@material-ui/core'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// toast.configure();
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded'
 import AddIcon from '@material-ui/icons/Add'
 import {makeStyles} from '@material-ui/core/styles'
 import {useSelector, useDispatch} from 'react-redux'
-import {addToCart, adjustQuantity, removeFromCart} from '../redux/actions/cart'
-import {formatMoney} from '../UtilityService/Helpers'
-import useFunctions from '../UtilityService/useFunctions'
+import {
+  addToCart,
+  adjustQuantity,
+  removeFromCart,
+} from '../../redux/actions/cart'
+import {formatMoney} from '../../UtilityService/Helpers'
+import useFunctions from '../../UtilityService/useFunctions'
 
 const useStyles = makeStyles(theme => ({
   root: {

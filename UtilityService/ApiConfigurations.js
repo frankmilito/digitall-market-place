@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {handleApiError} from './ApiErrors'
-import {string, object, oneOf, bool} from 'prop-types'
+import {string, object, oneOf} from 'prop-types'
 
 // const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 const base_url = 'https://fakestoreapi.com/'

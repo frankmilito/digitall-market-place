@@ -12,10 +12,11 @@ import {
   Typography,
   makeStyles,
 } from '@material-ui/core'
-import {getAllProduct, getSingleProduct} from '../../redux/actions/products'
-import {addToCart, adjustQuantity} from '../../redux/actions/cart'
+import {getSingleProduct} from '../../redux/actions/products'
+import {addToCart} from '../../redux/actions/cart'
 import useFunctions from '../../UtilityService/useFunctions'
 import {formatMoney} from '../../UtilityService/Helpers'
+import {CLEAR_SINGLE_PRODUCT} from '../../redux/actions/Contants'
 
 const useStyles = makeStyles(theme => ({
   quantityValue: {
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '18px',
     fontWeight: '500',
     margin: '1em 0',
-    '&:hover': {color: '#3D8754'},
+    '&:hover': {color: '#fff'},
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
       width: '150px',
@@ -135,15 +136,15 @@ function ProductDetails() {
         })
       )
     }
+    return () => {
+      dispatch({
+        type: CLEAR_SINGLE_PRODUCT,
+      })
+    }
   }, [productID])
 
   useEffect(() => {
     let cartCount = 0
-
-    // cart.forEach((item) => {
-    //   cartCount += item.qty;
-    //   setCartCount(cartCount);
-    // });
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].product_id === product.product_id) {
         cartCount += cart[i].qty
@@ -151,6 +152,7 @@ function ProductDetails() {
       }
     }
   }, [cart, cartCount])
+
   const addCart = id => {
     dispatch(addToCart(id))
     toast()
@@ -160,43 +162,41 @@ function ProductDetails() {
     <Container style={{marginTop: 10 + 'rem', marginBottom: 115 + 'px'}}>
       <>
         <Grid container className={classes.container}>
-          <Grid item xs={12} md={5}>
-            {loading && <CircularProgress />}
-            <Box>
-              <img
-                src={product?.image}
-                alt='product '
-                className={classes.logo}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={5} className={classes.items}>
-            <Typography className={classes.title}>
-              <small className={classes.grams}>{product?.title}</small>
-            </Typography>
-            <Typography className={classes.content}>
-              {formatMoney(product?.price)}
-            </Typography>
-            {/* <Link href="#"> */}
-            <Typography className={classes.description}>
-              {product?.description}
-            </Typography>
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={() => addCart(product?.id)}
-              className={classes.button}
-            >
-              Add to cart
-            </Button>
-            {/* </Link> */}
-
-            {/* <Typography component='p'>
-              <Link href='/cart'>
-                <Typography className={`${classes.view}`}>View Cart</Typography>
-              </Link>
-            </Typography> */}
-          </Grid>
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <>
+              <Grid item xs={12} md={5}>
+                <Box>
+                  <img
+                    src={product?.image}
+                    alt='product '
+                    className={classes.logo}
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={5} className={classes.items}>
+                <Typography className={classes.title}>
+                  <small className={classes.grams}>{product?.title}</small>
+                </Typography>
+                <Typography className={classes.content}>
+                  {formatMoney(product?.price)}
+                </Typography>
+                {/* <Link href="#"> */}
+                <Typography className={classes.description}>
+                  {product?.description}
+                </Typography>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  onClick={() => addCart(product?.id)}
+                  className={classes.button}
+                >
+                  Add to cart
+                </Button>
+              </Grid>
+            </>
+          )}
         </Grid>
       </>
     </Container>

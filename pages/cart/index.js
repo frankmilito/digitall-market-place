@@ -3,24 +3,16 @@ import {
   Grid,
   Button,
   Typography,
-  IconButton,
-  Box,
   useTheme,
   useMediaQuery,
 } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-// import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded'
-import AddIcon from '@material-ui/icons/Add'
-import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined'
 import {useSelector, useDispatch} from 'react-redux'
-import {removeFromCart} from '../../redux/actions/cart'
-import CartItem from '../../components/CartItem'
+import CartItem from '../../components/cart/CartItem'
 import router from 'next/router'
 import {formatMoney} from '../../UtilityService/Helpers'
 import Head from 'next/head'
-import MobileCartView from '../../components/MobileCartView'
+import MobileCartView from '../../components/cart/MobileCartView'
 import {ShoppingCart} from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
@@ -196,7 +188,7 @@ function Cart() {
   return (
     <>
       <Head>
-        <title>Greenfinite - Cart</title>
+        <title>Frank & Stores - Cart</title>
         <meta name='description' content='' />
       </Head>
       {isMobile ? (
@@ -262,7 +254,7 @@ function Cart() {
               >
                 Buy More
               </Button>
-              {cart.length > 0 ? (
+              {/* {cart.length > 0 ? (
                 <Button
                   variant='contained'
                   color='primary'
@@ -273,7 +265,7 @@ function Cart() {
                 </Button>
               ) : (
                 ''
-              )}
+              )} */}
             </Grid>
           </Grid>
         </div>
