@@ -69,8 +69,6 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {color: '#fff'},
     [theme.breakpoints.down('md')]: {
       fontSize: '16px',
-      width: '150px',
-      height: '50px',
     },
   },
   container: {
@@ -99,8 +97,9 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize',
     margin: '1em 0 ',
     [theme.breakpoints.down('md')]: {
-      fontSize: '20px',
+      fontSize: '16px',
       lineHeight: '24px',
+      textAlign: 'justify',
     },
   },
   add: {

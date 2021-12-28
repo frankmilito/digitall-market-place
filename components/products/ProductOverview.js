@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button'
 import {getAllProduct, sortedProducts} from '../../redux/actions/products'
 import {useDispatch, useSelector} from 'react-redux'
 import {useRouter} from 'next/router'
+import {formatMoney} from '../../UtilityService/Helpers'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
@@ -90,6 +91,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '16px',
     fontWeight: '400',
     padding: '0 !important',
+    marginBottom: '5px',
   },
   btn: {
     width: '100%',
@@ -198,6 +200,9 @@ function ProductsOverview() {
                         className={classes.cardContent}
                       >
                         {trimmedString(product.title)}
+                      </Typography>
+                      <Typography className={classes.cardContent}>
+                        {formatMoney(product.price)}
                       </Typography>
                     </CardContent>
                     <CardActions>
