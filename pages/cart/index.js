@@ -190,7 +190,7 @@ function Cart() {
       key: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
       email: 'frankstores@gmail.com',
       amount: totalPrice * 100,
-      currency: 'EUR',
+      currency: 'NGN',
       metadata: {
         custom_fields: [
           {
