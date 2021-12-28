@@ -20,8 +20,7 @@ import {useRouter} from 'next/router'
 const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
-    justifyContent: 'flex-start',
-    width: '100%',
+    justifyContent: 'center',
   },
   wrapper: {
     width: '80%',
@@ -66,7 +65,7 @@ const useStyles = makeStyles(theme => ({
   },
   products: {
     display: 'flex',
-    justifyContent: 'flex-start',
+    // justifyContent: 'space-around',
     marginBottom: '3em',
   },
   product: {
@@ -156,34 +155,32 @@ function ProductsOverview() {
       </Head>
       <Box className={classes.box}>
         <Grid container className={classes.wrapper}>
-          <Grid item container xs={12}>
-            <Grid item md={12}>
-              <Typography variant='h2' className={classes.title}>
-                Product Overview
-              </Typography>
-            </Grid>
-            <Grid item xs={10} md={10} className={classes.products}>
-              <TextField
-                select
-                fullWidth
-                label='Sort Products By'
-                onChange={handleChange}
-                value={sortedValue}
-                variant='filled'
-              >
-                {sortParams.map(params => (
-                  <MenuItem
-                    value={params}
-                    key={params}
-                    className={classes.menuItems}
-                  >
-                    {params}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Grid>
+          <Grid item md={12} id='#some-id'>
+            <Typography variant='h2' className={classes.title}>
+              Product Overview
+            </Typography>
           </Grid>
-          {/* <Grid item container className={classes.container}>
+          <Grid item xs={10} md={4} className={classes.products}>
+            <TextField
+              select
+              fullWidth
+              label='Sort Products By'
+              onChange={handleChange}
+              value={sortedValue}
+              variant='filled'
+            >
+              {sortParams.map(params => (
+                <MenuItem
+                  value={params}
+                  key={params}
+                  className={classes.menuItems}
+                >
+                  {params}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item container className={classes.container}>
             {loading ? (
               <div className={classes.progress}>
                 <CircularProgress />
@@ -225,7 +222,7 @@ function ProductsOverview() {
             ) : (
               ''
             )}
-          </Grid> */}
+          </Grid>
         </Grid>
       </Box>
     </>

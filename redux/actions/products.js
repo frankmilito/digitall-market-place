@@ -7,7 +7,6 @@ import axios from 'axios'
 export const getSingleProduct = (data, cb) => async dispatch => {
   try {
     const res = await callApi(`products/${data}`, 'GET')
-    console.log(res, 'single product')
     if (res) {
       dispatch({
         type: GET_SINGLE_PRODUCTS,
@@ -63,7 +62,6 @@ export const sortedProducts = (data, cb) => async dispatch => {
   const url = data === 'All' ? 'products' : `products/category/${data}`
   try {
     const res = await callApi(url, 'GET')
-    console.log(res, 'response')
 
     if (res) {
       dispatch({

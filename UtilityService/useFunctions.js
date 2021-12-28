@@ -1,18 +1,17 @@
-import React from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
 
 const useFunctions = () => {
   const notify = () => {
-    toast.success("Item added to Cart", {
+    toast.success('Item added to Cart', {
       position: toast.POSITION.TOP_RIGHT,
       hideProgressBar: false,
       autoClose: 2000,
-    });
-  };
+    })
+  }
 
-  return notify;
-};
+  return notify
+}
 
-export default useFunctions;
+export default useFunctions

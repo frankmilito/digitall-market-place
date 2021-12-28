@@ -247,10 +247,10 @@ const MobileCartView = () => {
   }
 
   const config = {
-    reference: new Date().getTime().toString(),
+    reference: new Date().getTime(),
     email: 'frankobidike20@gmail.com',
-    amount: totalPrice,
-    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
+    amount: totalPrice * 100,
+    publicKey: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
   }
 
   const onSuccess = reference => {
@@ -263,8 +263,36 @@ const MobileCartView = () => {
 
   const initializePayment = usePaystackPayment(config)
 
-  const checkout = () => {
-    initializePayment(onSuccess, onClose)
+  // const checkout = () => {
+  //   initializePayment(onSuccess, onClose)
+  // }
+
+  function payWithPaystack() {
+    var handler = PaystackPop.setup({
+      key: `${process.env.NEXT_PUBLIC_PAYSTACK_KEY}`,
+      email: 'franks&stores@gmail.com',
+      amount: totalPrice * 100,
+      currency: 'EUR',
+      metadata: {
+        custom_fields: [
+          {
+            display_name: 'Mobile Number',
+            variable_name: 'mobile_number',
+            value: '+2348012345678',
+          },
+        ],
+      },
+      callback: function (response) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Payment was successfull',
+        })
+      },
+      onClose: function () {
+        console.log('closed')
+      },
+    })
+    handler.openIframe()
   }
 
   return (
@@ -352,19 +380,19 @@ const MobileCartView = () => {
             </Box>
           </Grid>
           <Grid item className={classes.buttomItem2}>
-            {/* {cart.length === 0 ? (
+            {cart.length === 0 ? (
               ''
             ) : (
               <Button
                 variant='contained'
                 color='primary'
                 className={classes.btn}
-                onClick={checkout}
+                onClick={payWithPaystack}
                 disableElevation
               >
                 Checkout
               </Button>
-            )} */}
+            )}
             <Button
               variant='outlined'
               color='primary'

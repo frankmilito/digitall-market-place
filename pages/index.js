@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   wrapper: {
-    background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    marginTop: '2em',
+    background: ` 
     url('/images/christian1.png');`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
