@@ -4,6 +4,6 @@ toast.configure()
 export const formatMoney = money => {
   return new Intl.NumberFormat('de-DE', {
     style: 'currency',
-    currency: 'EUR',
+    currency: 'NGN',
   }).format(money)
 }
